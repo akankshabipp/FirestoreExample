@@ -41,28 +41,17 @@ class NewViewController: UIViewController {
         }
 }
     @IBAction func btnSaveAction(_ sender: Any) {
-//       guard let titleText = tfTitle.text, !titleText.isEmpty else { return }
-//        guard let detailText = tfDetails.text, !detailText.isEmpty else { return }
-//        let dataToSave: [String: Any] = ["Title": titleText, "Detail": detailText]
-//        docRef.setData(dataToSave) {
-//            (error) in
-//            if let error = error {
-//                print("Error Occured\(error.localizedDescription)")
-//            }else{
-//                print("Data has not saved")
-//            }
-//        }
-        
-        if let text = tfTitle.text, !text.isEmpty {
-            saveData(text: text)
+       guard let titleText = tfTitle.text, !titleText.isEmpty else { return }
+        guard let detailText = tfDetails.text, !detailText.isEmpty else { return }
+        let dataToSave: [String: Any] = ["Title": titleText, "Detail": detailText]
+        ref!.setData(dataToSave) {
+            (error) in
+            if let error = error {
+                print("Error Occured\(error.localizedDescription)")
+            }else{
+                print("Data has not saved")
+            }
         }
-        return true
-    }
-        let docRef = database.document("Info/Tasklist")
-        docRef.setData(["Title" : titleText, "Details" : detailText])
-    }
-    
 
-
-
+}
 }
